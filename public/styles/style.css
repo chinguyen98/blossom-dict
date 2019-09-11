@@ -1,0 +1,81 @@
+body{
+	background-image: url('https://images.alphacoders.com/715/thumb-1920-71521.jpg');
+	background-attachment: fixed;
+}
+
+nav{
+	opacity: 0.6;
+}
+
+footer{
+	position: fixed;
+	bottom: 0;
+	right: 20px;
+}
+
+.index{
+	font-family: 'Satisfy', cursive;
+}
+
+.index h1{
+	font-size: 100px;
+}
+
+.index h3{
+	font-size: 50px;
+}
+
+.index h5{
+	font-size: 50px;
+}
+
+.introIndex{
+	color: #AE1438;
+	transition: all 0.5s;
+}
+
+.introIndex:hover{
+	color: #45CE30;
+	text-decoration: none;
+}
+
+.leftIndex{
+	transform: translateX(-500px);
+	opacity: 0;
+	animation-name: leftToRight;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+	animation-timing-function: linear;
+}
+
+.rightIndex{
+	transform: translateX(500px);
+	opacity: 0;
+	animation-name: rightToLeft;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+	animation-timing-function: linear;
+}
+
+@keyframes leftToRight{
+	0%{
+		transform: translateX(-500px);
+		opacity: 0;
+	}
+	100%{
+		transform: translateX(0px);
+		opacity: 1;
+	}
+}
+
+@keyframes rightToLeft{
+	0%{
+		transform: translateX(500px);
+		opacity: 0;
+	}
+	100%{
+		transform: translateX(0px);
+		opacity: 1;
+	}
+}
+
