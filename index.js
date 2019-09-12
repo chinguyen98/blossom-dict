@@ -12,6 +12,8 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 const indexRoute = require('./routes/index.route');
+const flowersRoute = require('./routes/flowers.route');
+const usersRoute = require('./routes/users.route');
 
 app.set('views', './views');
 app.engine('.handlebars', handlebars({ defaultLayout: 'layout' }));
@@ -34,6 +36,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/', indexRoute);
+app.use('/flowers', flowersRoute);
+app.use('/users', usersRoute);
 
 app.use((req, res, next) => {
 	let err = new Error('Not found!!!');
