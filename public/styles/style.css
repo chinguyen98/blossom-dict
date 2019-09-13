@@ -61,6 +61,18 @@ footer{
 	animation-timing-function: linear;
 }
 
+.msg-valid-err-container{
+	width: 50%;
+	height: 50px;
+	text-align: center;
+	background-color: rgba(255,0,0,0.8);
+	margin: 15px auto;
+}
+
+.msg-valid-err{
+	color: white;
+}
+
 @keyframes leftToRight{
 	0%{
 		transform: translateX(-500px);
@@ -82,4 +94,6 @@ footer{
 		opacity: 1;
 	}
 }
+
+
 
