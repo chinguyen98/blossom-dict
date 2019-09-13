@@ -13,6 +13,11 @@ footer{
 	right: 20px;
 }
 
+ul li{
+	text-decoration: none;
+	list-style: none;
+}
+
 .flowerItem{
 	background-color: red;
 }
@@ -67,10 +72,24 @@ footer{
 	text-align: center;
 	background-color: rgba(255,0,0,0.8);
 	margin: 15px auto;
+	padding-top: 15px;
 }
 
 .msg-valid-err{
 	color: white;
+}
+
+.msg-success-container{
+	width: 50%;
+	height: 50px;
+	text-align: center;
+	background-color: rgba(88,244,70,0.8);
+	margin: 15px auto;
+	padding-top: 15px;
+}
+
+.msg-success{
+
 }
 
 @keyframes leftToRight{

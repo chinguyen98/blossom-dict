@@ -7,6 +7,13 @@
 </div>
 {{/each}}
 {{/if}}
+
+{{#if messages}}
+<div class="msg-valid-err-container">
+	{{{messages}}}
+</div>
+{{/if}}
+
 <div class="col col-md-6 m-auto">
 	<form action="/users/register" method="post">
 		<div class="form-group">
@@ -29,6 +36,6 @@
 			<input class="form-control" type="password" name="confirmPassword" id="confirmPassword"
 				placeholder="Confirm your password" value={{userInput.confirmPassword}}>
 		</div>
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<button type="submit" class="btn btn-primary">Register</button>
 	</form>
 </div>
