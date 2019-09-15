@@ -8,6 +8,10 @@ module.exports.renderRegisterPage = function (req, res) {
 
 module.exports.renderLoginPage = function (req, res) {
 	res.render('users/login', { title: 'Login' });
+};
+
+module.exports.renderUserPage = function (req, res) {
+	res.render('users/user', { title: 'User' })
 }
 
 module.exports.registerUser = function (req, res) {

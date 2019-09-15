@@ -88,10 +88,6 @@ ul li{
 	padding-top: 15px;
 }
 
-.msg-success{
-
-}
-
 @keyframes leftToRight{
 	0%{
 		transform: translateX(-500px);

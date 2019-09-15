@@ -5,6 +5,7 @@ const logger = require('morgan');
 const session = require('express-session');
 const flash = require('connect-flash');
 const handlebars = require('express-handlebars');
+const passport = require('passport');
 require('dotenv').config();
 
 const app = express();
@@ -28,6 +29,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('trust proxy', 1);
 app.use(cookieParser());
 app.use(session({ cookie: { maxAge: null }, secret: 'secret', name: 'session', resave: false, saveUninitialized: false }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(flash());
 app.use((req, res, next) => {
