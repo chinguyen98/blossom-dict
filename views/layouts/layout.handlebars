@@ -25,6 +25,23 @@
 				<h5>About</h5>
 			</a>
 		</div>
+		{{#if user}}
+		<div>
+			<a class="navbar-brand" href="/users">
+				<h2>BLOSSOM DICTIONARY</h2>
+			</a>
+		</div>
+		<div>
+			<a class="navbar-brand" href="/users/logout">
+				<h5>Logout</h5>
+			</a>
+		</div>
+		<div>
+			<a class="navbar-brand" href="/users">
+				<h5>{{user.username}}</h5>
+			</a>
+		</div>
+		{{else}}
 		<div>
 			<a class="navbar-brand" href="/">
 				<h2>BLOSSOM DICTIONARY</h2>
@@ -40,11 +57,14 @@
 				<h5>Register</h5>
 			</a>
 		</div>
+		{{/if}}
 	</nav>
 
 	{{{body}}}
 
-	<footer><p>Copyright by ChiNguyen</p></footer>
+	<footer>
+		<p>Copyright by ChiNguyen</p>
+	</footer>
 </body>
-
+<script src="/js/main.js"></script>
 </html>

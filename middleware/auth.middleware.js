@@ -4,6 +4,12 @@ const bcrypt = require('bcrypt');
 
 const User = require('../models/user.model');
 
+module.exports.ensureAuthenticated = function (req, res, next) {
+	if (req.isAuthenticated()) {
+		return next();
+	}
+	res.redirect('/users/login');
+}
 
 module.exports.authentication = passport.authenticate('local', {
 	successRedirect: '/users',

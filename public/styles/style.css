@@ -18,6 +18,10 @@ ul li{
 	list-style: none;
 }
 
+.changePasswordArea{
+	display: none;
+}
+
 .flowerItem{
 	background-color: red;
 }

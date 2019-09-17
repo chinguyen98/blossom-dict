@@ -22,6 +22,7 @@ app.set('view engine', 'handlebars');
 
 app.use(logger('dev'));
 app.use(express.static('./public'));
+app.use(express.static('files'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,6 +39,11 @@ app.use((req, res, next) => {
 	res.locals.messages = require('express-messages')(req, res)();
 	next();
 });
+
+app.all('*', (req, res, next) => {
+	res.locals.user = req.user || null;
+	next();
+})
 
 app.use('/', indexRoute);
 app.use('/flowers', flowersRoute);

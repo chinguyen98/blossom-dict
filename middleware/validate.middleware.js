@@ -22,4 +22,24 @@ module.exports.validateRegisterForm = function (req, res, next) {
 	}
 
 	next();
+};
+
+module.exports.validateChangePasswordForm = function (req, res, next) {
+	let errors = [];
+	if (!req.body.password) {
+		errors.push('Password field is required!');
+	}
+	if (!req.body.confirmPassword) {
+		errors.push('ConfirmPassword field is required!');
+	}
+	if (req.body.password !== req.body.confirmPassword) {
+		errors.push('Confirm password not match!');
+	}
+
+	if (errors.length) {
+		res.render('users/user', { title: 'User', errors: errors, user: res.locals.user });
+		return;
+	}
+
+	next();
 }

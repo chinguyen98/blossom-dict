@@ -1,6 +1,58 @@
-<h1 class="text-center">User area!</h1>
+<h1 class="text-center p-4">USER AREA</h1>
 {{#if messages}}
 <div class="msg-success-container">
 	{{{messages}}}
+</div>
+{{/if}}
+
+{{#if errors}}
+{{#each errors}}
+<div class="msg-valid-err-container">
+	<p class="msg-valid-err">{{this}}</p>
+</div>
+{{/each}}
+{{/if}}
+
+{{#if user}}
+<h1 class="text-center">Hello {{{user.username}}}! Below is your infomation:</h1>
+<div>
+	<h3 class="ml-5 my-2">Username: <span>{{{user.username}}}</span></h3>
+	<h3 class="ml-5 my-2">Email: <span>{{{user.email}}}</span></h3>
+	<button class="btn btn-danger ml-5 my-3 changePassword d-block">Change password</button>
+	<div class="changePasswordArea col col-md-6 text-center">
+		<form action="/users/changePassword" method="post">
+			<div class="form-group">
+				<label for="password">New password:</label>
+				<input class="ml-4 form-control" type="password" name="password" id="password"
+					placeholder="Enter your new password">
+			</div>
+			<div class="form-group">
+				<label for="confirmPassword">Confirm password:</label>
+				<input class="ml-4 form-control" type="password" name="confirmPassword" id="confirmPassword"
+					placeholder="Confirm your password">
+			</div>
+			<input class="btn btn-primary" type="submit" value="Confirm">
+		</form>
+	</div>
+	<div class="pickArea ml-5 m-5">
+		<h3>Your pick:</h3>
+		{{#if user.pickList}}
+		{{#each user.pickList}}
+		<h1>{{this}}</h1>
+		{{/each}}
+		{{else}}
+		<h1>U have nothing</h1>
+		{{/if}}
+	</div>
+	<div class="flowerArea ml-5 my-2">
+		<h3>Your flower post:</h3>
+		{{#if user.flowerList}}
+		{{#each user.flowerList}}
+		<h1>{{this}}</h1>
+		{{/each}}
+		{{else}}
+		<h1>Your flower post is empty!</h1>
+		{{/if}}
+	</div>
 </div>
 {{/if}}

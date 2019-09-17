@@ -11,7 +11,7 @@ module.exports.renderLoginPage = function (req, res) {
 };
 
 module.exports.renderUserPage = function (req, res) {
-	res.render('users/user', { title: 'User' })
+	res.render('users/user', { title: 'User', user: res.locals.user });
 }
 
 module.exports.registerUser = function (req, res) {
@@ -38,3 +38,23 @@ module.exports.registerUser = function (req, res) {
 		}
 	})
 };
+
+module.exports.logout = function (req, res) {
+	req.logout();
+	res.redirect('/');
+};
+
+module.exports.changePassword = function (req, res) {
+	bcrypt.genSalt(10, (err, salt) => {
+		bcrypt.hash(req.body.password, salt, (err, hashPassword) => {
+			User.findOneAndUpdate({ email: res.locals.user.email }, { $set: { password: hashPassword } }, (err, user) => {
+				if (err) throw err;
+				if (user) {
+					req.flash('msg-success', 'Change password successful!');
+					res.location('/users');
+					res.redirect('/users');
+				}
+			})
+		})
+	})
+}
