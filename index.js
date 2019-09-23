@@ -4,9 +4,13 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const flash = require('connect-flash');
-const handlebars = require('express-handlebars');
+const exphb = require('express-handlebars');
+const Handlebars = require('handlebars');
 const passport = require('passport');
+
 require('dotenv').config();
+const userPageHelper=require('./helpers/handlebars');
+userPageHelper.userPage(Handlebars);
 
 const app = express();
 
@@ -17,7 +21,7 @@ const flowersRoute = require('./routes/flowers.route');
 const usersRoute = require('./routes/users.route');
 
 app.set('views', './views');
-app.engine('.handlebars', handlebars({ defaultLayout: 'layout' }));
+app.engine('.handlebars', exphb({ defaultLayout: 'layout' }));
 app.set('view engine', 'handlebars');
 
 app.use(logger('dev'));

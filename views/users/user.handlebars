@@ -1,4 +1,3 @@
-<h1 class="text-center p-4">USER AREA</h1>
 {{#if messages}}
 <div class="msg-success-container">
 	{{{messages}}}
@@ -13,11 +12,12 @@
 {{/each}}
 {{/if}}
 
-{{#if user}}
-<h1 class="text-center">Hello {{{user.username}}}! Below is your infomation:</h1>
+{{#if_type user 0 userInput }}
+<h1 class="text-center p-4">USER AREA</h1>
+<h1 class="text-center">Hello {{{username}}}! Below is your infomation:</h1>
 <div>
-	<h3 class="ml-5 my-2">Username: <span>{{{user.username}}}</span></h3>
-	<h3 class="ml-5 my-2">Email: <span>{{{user.email}}}</span></h3>
+	<h3 class="ml-5 my-2">Username: <span>{{{username}}}</span></h3>
+	<h3 class="ml-5 my-2">Email: <span>{{{email}}}</span></h3>
 	<button class="btn btn-danger ml-5 my-3 changePassword d-block">Change password</button>
 	<div class="changePasswordArea col col-md-6 text-center">
 		<form action="/users/changePassword" method="post">
@@ -36,23 +36,41 @@
 	</div>
 	<div class="pickArea ml-5 m-5">
 		<h3>Your pick:</h3>
-		{{#if user.pickList}}
-		{{#each user.pickList}}
+		{{#if pickList}}
+		{{#each pickList}}
 		<h1>{{this}}</h1>
 		{{/each}}
 		{{else}}
 		<h1>U have nothing</h1>
 		{{/if}}
 	</div>
-	<div class="flowerArea ml-5 my-2">
-		<h3>Your flower post:</h3>
-		{{#if user.flowerList}}
-		{{#each user.flowerList}}
-		<h1>{{this}}</h1>
-		{{/each}}
-		{{else}}
-		<h1>Your flower post is empty!</h1>
-		{{/if}}
-	</div>
 </div>
-{{/if}}
+{{else}}
+<h1 class="text-center p-4">ADMIN AREA</h1>
+<h3 class="ml-5">Add flowers:</h3>
+<div class="col col-6 ml-5 pt-2 mb-5">
+	<form action="/flowers" method="post" enctype="multipart/form-data">
+		<div class="form-group">
+			<label for="name">Flower name:</label>
+			<input class="form-control" type="text" name="name" id="name" value={{name}}>
+		</div>
+		<div class="form-group">
+			<label for="definition">Definition:</label>
+			<textarea class="form-control" name="definition" id="definition" rows="3">{{definition}}</textarea>
+		</div>
+		<div class="form-group">
+			<label for="appearance">Appearance:</label>
+			<textarea class="form-control" name="appearance" id="appearance" rows="3">{{appearance}}</textarea>
+		</div>
+		<div class="form-group">
+			<label for="meaning">Meaning:</label>
+			<textarea class="form-control" name="meaning" id="meaning" rows="3">{{meaning}}</textarea>
+		</div>
+		<div class="form-group">
+			<label for="picture">Flower Picture: </label>
+			<input type="file" name="picture" id="picture">
+		</div>
+		<input class="btn btn-primary" type="submit" value="Add flower">
+	</form>
+</div>
+{{/if_type}}

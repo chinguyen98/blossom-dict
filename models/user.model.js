@@ -11,8 +11,8 @@ const userSchema = new mongoose.Schema({
 	username: String,
 	email: String,
 	password: String,
-	flowerList: Array,
-	pickList: Array
+	pickList: Array,
+	type: Number //0 is user and 1 is admin
 });
 
 const User = mongoose.model('user', userSchema);

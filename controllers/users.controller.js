@@ -28,7 +28,7 @@ module.exports.registerUser = function (req, res) {
 		} else {
 			bcrypt.genSalt(10, (err, salt) => {
 				bcrypt.hash(password, salt, (err, hashPassword) => {
-					const newUser = new User({ username: username, email: email, password: hashPassword });
+					const newUser = new User({ username: username, email: email, password: hashPassword, type: 0 });
 					newUser.save().then((user) => console.log(user));
 					req.flash('msg-success', 'Register successfully!');
 					res.location('/users/login');
