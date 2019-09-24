@@ -22,8 +22,20 @@ ul li{
 	display: none;
 }
 
+.flowerContainer img{
+	width: 30em;
+}
+
 .flowerItem{
-	background-color: red;
+	text-align: center;
+}
+
+.flowerItem *{
+	margin: 0.5em;
+}
+
+.flowerItem img{
+	width: 20em;
 }
 
 .index{

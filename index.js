@@ -9,7 +9,7 @@ const Handlebars = require('handlebars');
 const passport = require('passport');
 
 require('dotenv').config();
-const userPageHelper=require('./helpers/handlebars');
+const userPageHelper = require('./helpers/handlebars');
 userPageHelper.userPage(Handlebars);
 
 const app = express();

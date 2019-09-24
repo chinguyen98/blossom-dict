@@ -1,8 +1,21 @@
 const Flower = require('../models/flower.model');
 
 module.exports.renderFlowerDict = function (req, res) {
-	res.render('flowers/dict', { title: 'Flower Dictionary' });
+	Flower.find({}, (err, flowers) => {
+		if (err) throw err;
+		res.render('flowers/dict', { title: 'Flower Dictionary', flowerList: flowers });
+	});
 };
+
+module.exports.renderFlowerDetail = function (req, res) {
+	Flower.findById(req.params.id, (err, flower) => {
+		if (err) throw err;
+		else {
+			res.render('flowers/flower', { title: 'Flower page', flower: flower });
+		}
+	});
+
+}
 
 module.exports.addFlower = function (req, res) {
 	const name = req.body.name;
